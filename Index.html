@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8" />
+<title>The Alternative — Demo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root { --blue:#2563EB }
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',sans-serif;margin:0;background:#f7f7fb;color:#111}
+  header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;background:#fff;box-shadow:0 1px 8px rgba(0,0,0,.06);position:sticky;top:0}
+  h1{font-size:20px;color:var(--blue);margin:0}
+  nav a{margin-left:12px;color:#555;text-decoration:none}
+  nav a.active{color:var(--blue);font-weight:600}
+  main{padding:16px 14px 90px}
+  .card{background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 6px rgba(0,0,0,.08);margin:12px 0}
+  .card h3{margin:0 0 6px}
+  .small{font-size:12px;color:#666}
+  button{background:var(--blue);color:#fff;border:0;border-radius:10px;padding:8px 12px;margin:4px 6px}
+  footer{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #eee;display:flex}
+  footer a{flex:1;text-align:center;padding:10px 0;color:#555;text-decoration:none}
+  footer a.active{color:var(--blue);font-weight:600}
+</style>
+
+<header>
+  <h1>The Alternative</h1>
+  <nav>
+    <a id="nHome" class="active" href="#" onclick="show('home')">Home</a>
+    <a id="nPolls" href="#" onclick="show('polls')">Polls</a>
+    <a id="nComp" href="#" onclick="show('comp')">Complaints</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Home -->
+  <section id="home" class="tab active">
+    <h2>Featured Articles</h2>
+    <div class="card">
+      <h3>Reimagining Local Governance</h3>
+      <p>A 2-min summary of the policy piece…</p>
+      <div class="small">6 min read</div>
+    </div>
+  </section>
+
+  <!-- Polls -->
+  <section id="polls" class="tab" style="display:none">
+    <h2>Polls</h2>
+    <div class="card">
+      <h3>Should councils publish monthly budgets online?</h3>
+      <div>
+        <button onclick="vote('Yes')">Yes</button>
+        <button onclick="vote('No')">No</button>
+        <button onclick="vote('Not sure')">Not sure</button>
+      </div>
+      <div id="voteMsg" class="small"></div>
+    </div>
+  </section>
+
+  <!-- Complaints -->
+  <section id="comp" class="tab" style="display:none">
+    <h2>Report Issue</h2>
+    <div class="card">
+      <label class="small">Title<br/>
+        <input id="ct" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:8px" />
+      </label><br/><br/>
+      <label class="small">Description<br/>
+        <textarea id="cd" rows="3" style="width:100%;padding:8px;border:1px solid #ddd;border-radius:8px"></textarea>
+      </label><br/><br/>
+      <button onclick="submitIssue()">Submit</button>
+      <div id="ok" class="small" style="margin-top:8px;color:green"></div>
+    </div>
+
+    <h3>Nearby Issues (demo)</h3>
+    <ul id="list" class="small" style="margin:6px 0 0 18px;color:#555">
+      <li>Streetlight not working — 2.3 km</li>
+      <li>Garbage collection missed — 0.8 km</li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  <a id="fHome" class="active" href="#" onclick="show('home')">Home</a>
+  <a id="fPolls" href="#" onclick="show('polls')">Polls</a>
+  <a id="fComp"  href="#" onclick="show('comp')">Complaints</a>
+</footer>
+
+<script>
+  function setActive(id){
+    document.querySelectorAll('.tab').forEach(s=>s.style.display='none');
+    document.getElementById(id).style.display='block';
+    ['nHome','nPolls','nComp','fHome','fPolls','fComp'].forEach(i=>document.getElementById(i).classList.remove('active'));
+    if(id==='home'){ nHome.classList.add('active'); fHome.classList.add('active'); }
+    if(id==='poll
