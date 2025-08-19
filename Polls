@@ -1,0 +1,31 @@
+import React from 'react';
+
+export default function Polls() {
+  const [msg, setMsg] = React.useState('');
+
+  return (
+    <div style={{fontFamily:'sans-serif', background:'#f7f7fb', minHeight:'100vh', padding:16}}>
+      <h1 style={{color:'#1e40af', marginTop:0}}>The Alternative</h1>
+      <nav style={{marginBottom:12}}>
+        <a href="/" style={{marginRight:12, color:'#555'}}>Home</a>
+        <a href="/polls" style={{marginRight:12, color:'#1e40af', fontWeight:700}}>Polls</a>
+        <a href="/complaints" style={{color:'#555'}}>Complaints</a>
+      </nav>
+
+      <section>
+        <h2>Polls</h2>
+        <div style={{background:'#fff', borderRadius:8, padding:12, boxShadow:'0 1px 3px rgba(0,0,0,.08)'}}>
+          <h3>Should councils publish monthly budgets online?</h3>
+          {['Yes','No','Not sure'].map(opt=>(
+            <button key={opt}
+              onClick={()=>setMsg(`Thanks! You voted: ${opt}`)}
+              style={{margin:4, padding:'8px 12px', background:'#2563eb', color:'#fff', border:0, borderRadius:6}}>
+              {opt}
+            </button>
+          ))}
+          <div style={{marginTop:6, color:'#66a'}}>{msg}</div>
+        </div>
+      </section>
+    </div>
+  );
+}
