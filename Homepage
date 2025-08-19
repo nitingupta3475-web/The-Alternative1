@@ -1,0 +1,23 @@
+import React from 'react';
+
+export default function Home() {
+  return (
+    <div style={{fontFamily:'sans-serif', background:'#f7f7fb', minHeight:'100vh', padding:16}}>
+      <h1 style={{color:'#1e40af', marginTop:0}}>The Alternative</h1>
+      <nav style={{marginBottom:12}}>
+        <a href="/" style={{marginRight:12, color:'#1e40af', fontWeight:700}}>Home</a>
+        <a href="/polls" style={{marginRight:12, color:'#555'}}>Polls</a>
+        <a href="/complaints" style={{color:'#555'}}>Complaints</a>
+      </nav>
+
+      <section>
+        <h2>Featured Articles</h2>
+        <div style={{background:'#fff', borderRadius:8, padding:12, boxShadow:'0 1px 3px rgba(0,0,0,.08)'}}>
+          <h3>Reimagining Local Governance</h3>
+          <p>A short 2-min summary of the policy piece…</p>
+          <small style={{color:'#667'}}>6 min read</small>
+        </div>
+      </section>
+    </div>
+  );
+}
